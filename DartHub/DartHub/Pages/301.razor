@@ -1,0 +1,62 @@
+﻿@page "/301"
+@using DartHub.Models
+
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th colspan="@Players.Count" style="text-align: center;">301</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (Player player in Players)
+                {
+                    <td>
+                        <a class="ui image label">
+                            <img src=@player.AvatarPath>
+                            @player.Name
+                        </a>
+                    </td>
+                }
+            </tr>
+            <tr>
+                @foreach (Player player in Players)
+                {
+                    <td>
+                        <div class="ui big icon input">
+                            <input type="number" value="@player.Score">
+                        </div>
+                    </td>
+                }
+            </tr>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+
+<p>Current count: @currentCount</p>
+
+<button class="ui button btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="ui icon button">
+    <i class="cloud icon"></i>
+</button>
+
+@code {
+    public List<Player> Players { get; set; }
+
+    private int currentCount = 0;
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Players = new List<Player>()
+        {
+            new Player("Joe", 301),
+            new Player("Zoe", 301)
+        };
+    }
+}
+
