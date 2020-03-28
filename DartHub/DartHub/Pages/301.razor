@@ -34,22 +34,8 @@
         </tbody>
     </table>
 
-<p>Current count: @currentCount</p>
-
-<button class="ui button btn btn-primary" @onclick="IncrementCount">Click me</button>
-<button class="ui icon button">
-    <i class="cloud icon"></i>
-</button>
-
 @code {
     public List<Player> Players { get; set; }
-
-    private int currentCount = 0;
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-
     protected override async Task OnInitializedAsync()
     {
         Players = new List<Player>()
