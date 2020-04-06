@@ -1,45 +1,37 @@
 ﻿@page "/301"
 @using DartHub.Models
-
-    <table class="ui celled table">
-        <thead>
-            <tr>
-                <th colspan="@Players.Count" style="text-align: center;">301</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @foreach (Player player in Players)
-                {
-                    <td>
-                        <a class="ui image label">
-                            <img src=@player.AvatarPath>
-                            @player.Name
+  
+    <div id="301board">
+        <h2 class="ui header" style="text-align: center;">
+            <i class="bullseye icon"></i> 301
+        </h2>
+        <div class="ui centered grid">
+            @foreach (Player player in Players)
+            {
+                <div class="four wide column">
+                    <div class="ui vertical menu">
+                        <a class="ui label item">
+                            <img class="ui right spaced avatar image" src=@player.AvatarPath>@player.Name
                         </a>
-                    </td>
-                }
-            </tr>
-            <tr>
-                @foreach (Player player in Players)
-                {
-                    <td>
-                        <div class="ui big icon input">
+                        <div class="ui big icon input item">
                             <input type="number" value="@player.Score">
                         </div>
-                    </td>
-                }
-            </tr>
-            <tr>
-            </tr>
-        </tbody>
-    </table>
+                        <div class="item">
+                            <div style="float: left; margin-bottom: 10px" class="ui label">T20</div>
+                            <div style="float: left; margin-bottom: 10px" class="ui label">D17</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 
 @code {
     public List<Player> Players { get; set; }
     protected override async Task OnInitializedAsync()
     {
         Players = new List<Player>()
-        {
+    {
             new Player("Joe", 301),
             new Player("Zoe", 301)
         };
